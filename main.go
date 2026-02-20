@@ -110,13 +110,17 @@ func main() {
 		}
 		tmpl.Execute(w, data)
 	})
-
-	port := os.Getenv("PORT")
+	
+    port := os.Getenv("PORT") // Получаем порт от сервера
 	if port == "" {
-		port = "8080"
+		port = "8080" // Если запускаем локально, будет 8080
 	}
-	fmt.Println("🚀 Запущено на http://localhost:" + port)
-	http.ListenAndServe(":"+port, nil)
+
+	fmt.Println("🌐 Сайт запущен на порту " + port)
+	err := http.ListenAndServe(":"+port, nil)
+	if err != nil {
+
+	}
 }
 
 const htmlTemplate = `
